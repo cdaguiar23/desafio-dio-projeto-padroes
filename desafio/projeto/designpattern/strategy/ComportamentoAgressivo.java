@@ -1,6 +1,6 @@
-package desafio.projeto.designpattern.singleton;
+package desafio.projeto.designpattern.strategy;
 
-import desafio.projeto.designpattern.strategy.Comportamento;
+
 
 public class ComportamentoAgressivo implements Comportamento {
 
@@ -8,4 +8,5 @@ public class ComportamentoAgressivo implements Comportamento {
     public void mover() {
         System.out.println("Movendo-se agressivamente...");
     }
+
 }

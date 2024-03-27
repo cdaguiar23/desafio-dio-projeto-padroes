@@ -15,7 +15,7 @@ public class CepApi {
         return "Brusque";
     }
 
-    public string recuperarEstado(String cep) {
+    public String recuperarEstado(String cep) {
         return "SC";
     }
 }

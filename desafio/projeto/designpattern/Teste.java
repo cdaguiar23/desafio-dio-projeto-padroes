@@ -1,12 +1,11 @@
 package desafio.projeto.designpattern;
 
-import desafio.projeto.designpattern.singleton.ComportamentoAgressivo;
-import desafio.projeto.designpattern.singleton.PadraoSingletonEager;
-import desafio.projeto.designpattern.singleton.PadraoSingletonLazy;
-import desafio.projeto.designpattern.singleton.PadraoSingletonLazyHolder;
-import desafio.projeto.designpattern.strategy.Comportamento;
-import desafio.projeto.designpattern.strategy.ComportamentoDefensivo;
-import desafio.projeto.designpattern.strategy.ComportamentoNormal;
+import desafio.projeto.designpattern.facade.Facade;
+import desafio.projeto.designpattern.strategy.*;
+import desafio.projeto.designpattern.singleton.SingletonEager;
+import desafio.projeto.designpattern.singleton.SingletonLazy;
+import desafio.projeto.designpattern.singleton.SingletonLazyHolder;
+import desafio.projeto.designpattern.strategy.Robo;
 
 public class Teste {
 
@@ -14,37 +13,41 @@ public class Teste {
 
         // Testes relacionados ao Design Pattern Singleton:
 
-        PadraoSingletonLazy lazy = PadraoSingletonLazy.getInstancia();
+        SingletonLazy lazy = SingletonLazy.getInstancia();
         System.out.println(lazy);
-        lazy = PadraoSingletonLazy.getInstancia();
+        lazy = SingletonLazy.getInstancia();
         System.out.println(lazy);
 
-        PadraoSingletonEager eager = PadraoSingletonEager.getInstancia();
+        SingletonEager eager = SingletonEager.getInstancia();
         System.out.println(eager);
-        eager = PadraoSingletonEager.getInstancia();
+        eager = SingletonEager.getInstancia();
         System.out.println(eager);
 
-        PadraoSingletonLazyHolder lazyholder = PadraoSingletonLazyHolder.getInstancia();
+        SingletonLazyHolder lazyholder = SingletonLazyHolder.getInstancia();
         System.out.println(lazyholder);
-        lazyholder = PadraoSingletonLazyHolder.getInstancia();
+        lazyholder = SingletonLazyHolder.getInstancia();
         System.out.println(lazyholder);
+
+
+        // Testes relacionados ao Design Pattern Strategy:
+
+        Comportamento defensivo = new ComportamentoDefensivo();
+        Comportamento normal = new ComportamentoNormal();
+        Comportamento agressivo = new ComportamentoAgressivo();
+
+        Robo robo = new Robo();
+        robo.setComportamento(normal);
+        robo.mover();
+        robo.mover();
+        robo.setComportamento(defensivo);
+        robo.mover();
+        robo.setComportamento(agressivo);
+        robo.mover();
+        robo.mover();
+        robo.mover();
+
+        // Testes relacionados ao Design Pattern Facdade:
+        Facade facade = new Facade();
+        facade.migrarCliente("Jair", "88354030");
     }
-
-    // Testes relacionados ao Design Pattern Strategy:
-
-    Comportamento  defensivo = new ComportamentoDefensivo;
-    Comportamento normal = new ComportamentoNormal;
-    Comportamento agressivo = new ComportamentoAgressivo;
-
-    Robo robo = new Robo();
-    robo.setComportamento(normal);
-    robo.mover();
-    robo.setComportamento(defensivo);
-    robo.mover();
-    robo.setComportamento(agressivo);
-    robo.mover();
-
-    // Testes relacionados ao Design Pattern Facdade:
-    Facade facade = new Facade();
-    facade.migrarCleinte("Jair", "88354030");
 }
